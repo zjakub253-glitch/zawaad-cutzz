@@ -57,11 +57,6 @@
             gap: 10px;
         }
 
-        .logo img {
-            height: 40px;
-            width: auto;
-        }
-
         .hero {
             padding: 5rem 2rem;
             text-align: center;
@@ -268,8 +263,6 @@
     <header>
         <div class="nav-container">
             <a href="#" class="logo">
-                <!-- Miejsce na Twoje logo (wystarczy podmienić ścieżkę logo.png) -->
-                <!-- <img src="logo.png" alt="zawaad cutzz logo"> -->
                 zawaad cutzz
             </a>
             <a href="#booking" class="cta-btn" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">Zapisz się</a>
@@ -305,8 +298,7 @@
 
         <h2 class="section-title" id="booking">Rezerwacja Online</h2>
         <div class="booking-box">
-            <!-- Formularz wysyła powiadomienia na podany adres e-mail przez Formspree -->
-            <form id="reservationForm" action="https://formspree.io/f/zjakub253@gmail.com" method="POST" onsubmit="return handleFormSubmit(event)">
+            <form id="reservationForm" action="https://formspree.io/f/mdeapdoj" method="POST" onsubmit="return handleFormSubmit(event)">
                 
                 <div class="form-group">
                     <label>Wybrana usługa</label>
@@ -380,7 +372,6 @@
         let selectedPrice = 0;
         let selectedTime = '';
 
-        // Ustawienie minimalnej daty na dzisiaj
         const datePicker = document.getElementById('datePicker');
         const today = new Date().toISOString().split('T')[0];
         datePicker.min = today;
