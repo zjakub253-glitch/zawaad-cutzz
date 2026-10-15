@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zawaad cutzz | Barber Shop Piekoszów</title>
+    <style>
+        :root {
+            --bg-color: #0b0b0b;
+            --card-bg: #141414;
+            --text-color: #ffffff;
+            --accent-color: #ffffff;
+            --muted-color: #a0a0a0;
+            --border-color: #262626;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background: rgba(11, 11, 11, 0.95);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .hero {
+            padding: 5rem 2rem;
+            text-align: center;
+            background: linear-gradient(180deg, #141414 0%, #0b0b0b 100%);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: 3px;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .hero p {
+            color: var(--muted-color);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: var(--text-color);
+            color: var(--bg-color);
+            padding: 0.9rem 2.2rem;
+            border-radius: 4px;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.2s ease;
+        }
+
+        .cta-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 2px;
+            background: var(--text-color);
+            margin: 10px auto 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.8rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: border-color 0.2s;
+        }
+
+        .service-card:hover, .service-card.selected {
+            border-color: var(--text-color);
+        }
+
+        .service-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .service-info p {
+            color: var(--muted-color);
+            font-size: 0.9rem;
+        }
+
+        .service-price {
+            font-size: 1.3rem;
+            font-weight: 800;
+            white-space: nowrap;
+            margin-left: 1rem;
+        }
+
+        .booking-box {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--muted-color);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.9rem;
+            background: #0b0b0b;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .form-control:focus {
+            border-color: #fff;
+        }
+
+        .time-slots {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+            gap: 0.8rem;
+            margin-top: 0.5rem;
+        }
+
+        .time-slot {
+            background: #0b0b0b;
+            border: 1px solid var(--border-color);
+            padding: 0.7rem;
+            text-align: center;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .time-slot:hover, .time-slot.selected {
+            background: var(--text-color);
+            color: var(--bg-color);
+            border-color: var(--text-color);
+        }
+
+        .summary-box {
+            background: #0b0b0b;
+            border-radius: 6px;
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            border: 1px dashed var(--border-color);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .info-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            border-radius: 8px;
+        }
+
+        .info-card h4 {
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.8rem;
+        }
+
+        footer {
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            padding: 2rem;
+            color: var(--muted-color);
+            font-size: 0.9rem;
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <!-- Miejsce na Twoje logo (wystarczy podmienić ścieżkę logo.png) -->
+                <!-- <img src="logo.png" alt="zawaad cutzz logo"> -->
+                zawaad cutzz
+            </a>
+            <a href="#booking" class="cta-btn" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">Zapisz się</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>zawaad cutzz</h1>
+        <p>Precyzja, styl i męski klimat w Piekoszowie.</p>
+        <a href="#booking" class="cta-btn">Zarezerwuj wizytę</a>
+    </section>
+
+    <main class="container">
+        
+        <h2 class="section-title">Cennik Usług</h2>
+        <div class="services-grid">
+            <div class="service-card" onclick="selectService('Strzyżenie Męskie', 40, this)">
+                <div class="service-info">
+                    <h3>Strzyżenie Męskie</h3>
+                    <p>Mycie, dopasowanie fryzury i profesjonalna stylizacja.</p>
+                </div>
+                <div class="service-price">40 PLN</div>
+            </div>
+
+            <div class="service-card" onclick="selectService('Combo (Włosy + Broda)', 50, this)">
+                <div class="service-info">
+                    <h3>Combo (Włosy + Broda)</h3>
+                    <p>Kompleksowe strzyżenie włosów oraz pielęgnacja i konturowanie brody.</p>
+                </div>
+                <div class="service-price">50 PLN</div>
+            </div>
+        </div>
+
+        <h2 class="section-title" id="booking">Rezerwacja Online</h2>
+        <div class="booking-box">
+            <!-- Formularz wysyła powiadomienia na podany adres e-mail przez Formspree -->
+            <form id="reservationForm" action="https://formspree.io/f/zjakub253@gmail.com" method="POST" onsubmit="return handleFormSubmit(event)">
+                
+                <div class="form-group">
+                    <label>Wybrana usługa</label>
+                    <input type="text" id="selectedServiceInput" name="Usługa" class="form-control" value="Nie wybrano (Kliknij usługę powyżej)" readonly required>
+                    <input type="hidden" id="selectedPriceInput" name="Cena" value="0">
+                </div>
+
+                <div class="form-group">
+                    <label>Barber</label>
+                    <select name="Barber" class="form-control" required>
+                        <option value="Kuba">Kuba</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Wybierz datę</label>
+                    <input type="date" id="datePicker" name="Data" class="form-control" required onchange="updateSummary()">
+                </div>
+
+                <div class="form-group">
+                    <label>Wybierz godzinę (14:00 - 18:00)</label>
+                    <div class="time-slots">
+                        <div class="time-slot" onclick="selectTime('14:00', this)">14:00</div>
+                        <div class="time-slot" onclick="selectTime('14:45', this)">14:45</div>
+                        <div class="time-slot" onclick="selectTime('15:30', this)">15:30</div>
+                        <div class="time-slot" onclick="selectTime('16:15', this)">16:15</div>
+                        <div class="time-slot" onclick="selectTime('17:00', this)">17:00</div>
+                        <div class="time-slot" onclick="selectTime('17:30', this)">17:30</div>
+                    </div>
+                    <input type="hidden" id="selectedTimeInput" name="Godzina" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Imię i Nazwisko</label>
+                    <input type="text" name="Imię i Nazwisko" class="form-control" placeholder="np. Jan Kowalski" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Numer Telefonu</label>
+                    <input type="tel" name="Telefon" class="form-control" placeholder="np. 123 456 789" required>
+                </div>
+
+                <div class="summary-box">
+                    <strong>Podsumowanie:</strong>
+                    <p id="summaryText">Wybierz usługę, datę i godzinę.</p>
+                </div>
+
+                <button type="submit" class="cta-btn" style="width: 100%; border: none; cursor: pointer;">Zatwierdź rezerwację</button>
+            </form>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <h4>Lokalizacja</h4>
+                <p>Piekoszów<br>ul. Klonowa 20</p>
+            </div>
+            <div class="info-card">
+                <h4>Godziny Otwarcia</h4>
+                <p>Poniedziałek - Sobota<br><strong>14:00 - 18:00</strong><br>Niedziela: Zamknięte</p>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 zawaad cutzz. Wszystkie prawa zastrzeżone.</p>
+    </footer>
+
+    <script>
+        let selectedService = '';
+        let selectedPrice = 0;
+        let selectedTime = '';
+
+        // Ustawienie minimalnej daty na dzisiaj
+        const datePicker = document.getElementById('datePicker');
+        const today = new Date().toISOString().split('T')[0];
+        datePicker.min = today;
+        datePicker.value = today;
+
+        function selectService(name, price, element) {
+            document.querySelectorAll('.service-card').forEach(card => card.classList.remove('selected'));
+            element.classList.add('selected');
+
+            selectedService = name;
+            selectedPrice = price;
+
+            document.getElementById('selectedServiceInput').value = `${name} (${price} PLN)`;
+            document.getElementById('selectedPriceInput').value = `${price} PLN`;
+            updateSummary();
+        }
+
+        function selectTime(time, element) {
+            document.querySelectorAll('.time-slot').forEach(slot => slot.classList.remove('selected'));
+            element.classList.add('selected');
+
+            selectedTime = time;
+            document.getElementById('selectedTimeInput').value = time;
+            updateSummary();
+        }
+
+        function updateSummary() {
+            const date = datePicker.value;
+            const summaryText = document.getElementById('summaryText');
+
+            if (!selectedService) {
+                summaryText.innerText = 'Wybierz usługę z listy powyżej.';
+                return;
+            }
+
+            if (!selectedTime) {
+                summaryText.innerText = `Wybrano: ${selectedService} (${selectedPrice} PLN). Wybierz godzinę.`;
+                return;
+            }
+
+            summaryText.innerText = `${selectedService} | Data: ${date} o godz. ${selectedTime} | Do zapłaty: ${selectedPrice} PLN`;
+        }
+
+        function handleFormSubmit(event) {
+            if (!selectedService) {
+                alert('Proszę wybrać usługę!');
+                return false;
+            }
+            if (!selectedTime) {
+                alert('Proszę wybrać godzinę rezerwacji!');
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>
